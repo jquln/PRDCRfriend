@@ -1,4 +1,6 @@
-﻿using PRDCRfriend.Models;
+﻿using Microsoft.AspNet.Identity;
+using PRDCRfriend.Models;
+using PRDCRfriend.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace PRDCRfriend.WebMVC.Controllers
         // GET: Producer
         public ActionResult Index()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var model = new ProducerListItem[0];
+
             return View(model);
         }
 
@@ -28,12 +32,19 @@ namespace PRDCRfriend.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProducerCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ProducerService(userId);
+
+            service.CreateProducer(model);
+
+            return RedirectToAction("Index");
         }
+
 
     }
 }
