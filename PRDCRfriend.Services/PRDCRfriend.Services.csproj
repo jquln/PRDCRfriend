@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProducerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PRDCRfriend.Data\PRDCRfriend.Data.csproj">
+      <Project>{dd6bddba-8075-411d-947b-73c553010533}</Project>
+      <Name>PRDCRfriend.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PRDCRfriend.Models\PRDCRfriend.Models.csproj">
+      <Project>{9727ae19-5625-4dbc-a28d-a4a004793a19}</Project>
+      <Name>PRDCRfriend.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

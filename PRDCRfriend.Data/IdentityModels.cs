@@ -32,6 +32,7 @@ namespace PRDCRfriend.Data
             return new ApplicationDbContext();
         }
 
+        public DbSet<Producer> Producers { get; set; }
         //public DbSet<Artist> Artists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

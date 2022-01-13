@@ -18,6 +18,8 @@ namespace PRDCRfriend.Data
         [Required]
         public string LastName { get; set; }
 
+       
+
 
 
         //public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
