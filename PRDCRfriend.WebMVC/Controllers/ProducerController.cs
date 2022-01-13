@@ -16,7 +16,8 @@ namespace PRDCRfriend.WebMVC.Controllers
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var model = new ProducerListItem[0];
+            var service = new ProducerService(userId);
+            var model = service.GetProducers();
 
             return View(model);
         }
@@ -32,19 +33,27 @@ namespace PRDCRfriend.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProducerCreate model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateProducerService();
+
+            if (service.CreateProducer(model))
             {
-                return View(model);
-            }
+                TempData["SaveResult"] = "Producer was created!";
+                return RedirectToAction("Index");
+            };
 
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProducerService(userId);
+            ModelState.AddModelError("", "Producer could not be created.");
 
-            service.CreateProducer(model);
-
-            return RedirectToAction("Index");
+            return View(model);
         }
 
+        private ProducerService CreateProducerService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ProducerService(userId);
+            return service;
+        }
 
     }
 }
