@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRDCRfriend.Data
+namespace PRDCRfriend.Models
 {
-    public class Producer
+    public class ProducerEdit
     {
-        [Key]
+        [Required]
         public int ProducerId { get; set; }
 
         [Required]
@@ -17,13 +17,7 @@ namespace PRDCRfriend.Data
 
         [Required]
         public string LastName { get; set; }
-
-       public Guid OwnerId { get; set; }
-
-
-
         //public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
-
 
     }
 }

@@ -54,5 +54,23 @@ namespace PRDCRfriend.Services
             }
         }
 
+        public ProducerDetail GetProducerById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Producers
+                    .Single(e => e.ProducerId == id && e.OwnerId == _userId);
+                return
+                    new ProducerDetail
+                    {
+                        ProducerId = entity.ProducerId,
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName
+                    };
+            }
+        }
+
     }
 }

@@ -48,12 +48,23 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateProducerService();
+            var model = svc.GetProducerById(id);
+
+            return View(model);
+        }
+
+
+
         private ProducerService CreateProducerService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ProducerService(userId);
             return service;
         }
+
 
     }
 }
