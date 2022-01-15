@@ -33,7 +33,7 @@ namespace PRDCRfriend.Data
         }
 
         public DbSet<Producer> Producers { get; set; }
-        //public DbSet<Artist> Artists { get; set; }
+        public DbSet<Artist> Artists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
