@@ -20,6 +20,12 @@ namespace PRDCRfriend.Models.SessionModels
         public TimeSpan Duration { get; set; }
 
         [Required]
+        public string PlannerId { get; set; }
+
+        [Required]
+        public string PlannerContent { get; set; }
+
+        [Required]
         public int ProducerId { get; set; }
 
         [Required]
