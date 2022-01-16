@@ -13,8 +13,8 @@ namespace PRDCRfriend.Models.SessionModels
 
         public string ProjectTitle { get; set; }
 
-        [Display(Name = "Created")]
-        public DateTime CreatedUtc { get; set; }
+        
+        public string Time { get; set; }
 
         public string Producer { get; set; }
 

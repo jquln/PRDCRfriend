@@ -17,15 +17,16 @@ namespace PRDCRfriend.Models.SessionModels
         public string ProjectTitle { get; set; }
 
         [Required]
-        public DateTime CreatedUtc { get; set; }
+        [Display(Name ="Created")]
+        public DateTime Time { get; set; }
 
         [Required]
         public TimeSpan Duration { get; set; }
 
-        [Required]
+        
         public int ArtistId { get; set; }
 
-        [Required]
+       
         public int ProducerId { get; set; }
 
 

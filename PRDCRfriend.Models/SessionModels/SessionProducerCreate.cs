@@ -14,19 +14,16 @@ namespace PRDCRfriend.Models.SessionModels
         public string ProjectTitle { get; set; }
 
         [Required]
-        public DateTime CreatedUtc { get; set; }
+        public DateTime Time { get; set; }
 
         [Required]
         public TimeSpan Duration { get; set; }
 
-        [Required]
-        public string PlannerId { get; set; }
-
-        [Required]
-        public string PlannerContent { get; set; }
 
         [Required]
         public int ProducerId { get; set; }
+
+        public int ArtistId { get; set; }
 
         [Required]
         public string ArtistLastName { get; set; }

@@ -17,7 +17,7 @@ namespace PRDCRfriend.Models.PlannerModels
         public string ProjectTitle { get; set; }
 
         [Required]
-        public DateTime CreatedUtc { get; set; }
+        public DateTime Time { get; set; }
 
         [Required]
         public int ProducerId { get; set; }

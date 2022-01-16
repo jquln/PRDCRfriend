@@ -14,7 +14,10 @@ namespace PRDCRfriend.Models
 
         public string LastName { get; set; }
         //public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
+
         
+        public string PlannerContent { get; set; }
+
         public virtual List<Artist> Artists { get; set; }
 
     }

@@ -12,7 +12,7 @@ namespace PRDCRfriend.Models.PlannerModels
 
         public int ProducerId { get; set; }
 
-        public string ProjectName { get; set; }
+        public string ProjectTitle { get; set; }
 
     }
 }

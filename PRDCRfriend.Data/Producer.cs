@@ -18,7 +18,11 @@ namespace PRDCRfriend.Data
         [Required]
         public string LastName { get; set; }
 
-       public Guid OwnerId { get; set; }
+        public Guid OwnerId { get; set; }
+
+        public virtual List<Session> Sessions { get; set; } = new List<Session>();
+
+        public string PlannerId { get; set; }
 
 
 

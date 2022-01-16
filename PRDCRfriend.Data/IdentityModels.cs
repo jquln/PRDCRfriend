@@ -34,6 +34,8 @@ namespace PRDCRfriend.Data
 
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<ProjectPlanner> ProjectPlanners { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

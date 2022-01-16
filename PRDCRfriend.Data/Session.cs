@@ -16,22 +16,23 @@ namespace PRDCRfriend.Data
         [Required]
         public string ProjectTitle { get; set; }
 
-        [Required]
-        public DateTime CreatedUtc { get; set; }
 
-        public DateTimeOffset? ModifiedUtc { get; set; }
+        [Required]
+        public DateTime Time { get; set; }
+
 
         [Required]
         //Request style "00:00:00" 
         public TimeSpan Duration { get; set; }
-
-
 
         [ForeignKey(nameof(Producer))]
         public int ProducerId { get; set; }
 
         [ForeignKey(nameof(Artist))]
         public int ArtistId { get; set; }
+
+        public string Artist { get; set; }
+
         public virtual List<Artist> Artists { get; set; }
 
     }
