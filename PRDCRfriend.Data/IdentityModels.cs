@@ -32,6 +32,8 @@ namespace PRDCRfriend.Data
             return new ApplicationDbContext();
         }
 
+        
+
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Session> Sessions { get; set; }

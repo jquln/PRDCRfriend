@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using PRDCRfriend.Data;
 using PRDCRfriend.Models;
 using PRDCRfriend.Services;
 using System;
@@ -12,6 +13,7 @@ namespace PRDCRfriend.WebMVC.Controllers
     [Authorize]
     public class ProducerController : Controller
     {
+
         // GET: Producer
         public ActionResult Index()
         {

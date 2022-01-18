@@ -21,6 +21,7 @@ namespace PRDCRfriend.Models
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
         public string LastName { get; set; }
 
+        
 
     }
 }

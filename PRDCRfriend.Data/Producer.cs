@@ -29,6 +29,7 @@ namespace PRDCRfriend.Data
 
 
         //public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
+        public string FullName() => $"{LastName}  {FirstName}";
 
 
     }

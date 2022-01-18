@@ -23,6 +23,7 @@ namespace PRDCRfriend.Models.SessionModels
         public int ArtistId { get; set; }
 
         public string Artist { get; set; }
+        public string Producer { get; set; }
 
     }
 }

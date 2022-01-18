@@ -12,9 +12,14 @@ namespace PRDCRfriend.Data
     {
         [Key]
         public int SessionId { get; set; }
+        public Guid OwnerId { get; set; }
 
         [Required]
         public string ProjectTitle { get; set; }
+
+        public string ArtistFirstName { get; set; }
+
+        public string ArtistLastName { get; set; }
 
 
         [Required]
@@ -34,6 +39,7 @@ namespace PRDCRfriend.Data
         [ForeignKey(nameof(Artist))]
         public int ArtistId { get; set; }
         public Artist Artist { get; set; }
+        
 
         public virtual List<Artist> Artists { get; set; }
         public virtual List<Session> Sessions { get; set; } = new List<Session>();

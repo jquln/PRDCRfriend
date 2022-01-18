@@ -23,11 +23,15 @@ namespace PRDCRfriend.Models.SessionModels
         [Required]
         public TimeSpan Duration { get; set; }
 
-        
-        public int ArtistId { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
+        public string ArtistFirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string ArtistLastName { get; set; }
 
        
-        public int ProducerId { get; set; }
+        
 
 
 

@@ -48,7 +48,13 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateSessionService();
+            var model = svc.GetSessionById(id);
 
+            return View(model);
+        }
 
 
 

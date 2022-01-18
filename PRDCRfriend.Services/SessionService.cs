@@ -21,12 +21,12 @@ namespace PRDCRfriend.Services
             var entity =
                 new Session()
                 {
-                    SessionId = model.SessionId,
+
                     ProjectTitle = model.ProjectTitle,
                     Time = model.Time,
                     Duration = model.Duration,
-                    ArtistId = model.ArtistId,
-                    ProducerId = model.ProducerId
+                    ArtistFirstName = model.ArtistFirstName,
+                    ArtistLastName = model.ArtistLastName
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -41,34 +41,34 @@ namespace PRDCRfriend.Services
 
         public bool CreateSessionWithArtist(SessionProducerCreate model)
         {
-           
+
             var session =
                 new Session()
                 {
                     ProjectTitle = model.ProjectTitle,
                     Time = DateTime.Now,
                     Duration = model.Duration,
-                    ProducerId =model.ProducerId,
+                    ProducerId = model.ProducerId,
                 };
-           
+
             var artist = new Artist()
             {
                 FirstName = model.ArtistFirstName,
                 LastName = model.ArtistLastName,
                 PhoneNumber = model.ArtistPhoneNumber
             };
-           
+
             if (SessionNoOverlap(session))
             {
 
                 using (var ctx = new ApplicationDbContext())
                 {
-                   
+
                     ctx.Artists.Add(artist);
-                   
+
                     if (ctx.SaveChanges() == 1)
                     {
-                        
+
                         var artistdbObject = ctx.Artists.OrderByDescending(x => x.ArtistId).FirstOrDefault();
                         session.ArtistId = artistdbObject.ArtistId;
                         ctx.Artists.Add(artist);
@@ -88,17 +88,17 @@ namespace PRDCRfriend.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                
+
                 var producer = ctx.Producers.Single(x => x.ProducerId == session.ProducerId);
 
                 if (producer != null)
                 {
-                   
+
                     foreach (var sesh in producer.Sessions)
                     {
                         var oldStart = sesh.Time;
                         var oldEnd = sesh.Time + session.Duration;
-                        
+
                         bool overlap = oldStart < newEnd && newStart < oldEnd;
                         if (overlap)
                         {
@@ -118,19 +118,79 @@ namespace PRDCRfriend.Services
             {
                 var query =
                     ctx
-                        .Sessions.ToArray();
-                return query.Select(
-                    e =>
-                    new SessionListItem
-                    {
-                        SessionId = e.SessionId,
-                        Time = e.Time.ToShortDateString(),
-                        ProjectTitle = e.ProjectTitle,
-                        Artist = e.Artist.FullName()
-                    }).ToArray();
+                        .Sessions
+                        .Where(e => e.OwnerId == _userId)
+                            .Select(
+                                e =>
+                                new SessionListItem
+                                {
+                                    ProjectTitle = e.ProjectTitle,
+                                    Time = e.Time.ToShortDateString(),
+                                    Artist = e.Artist.FullName()
+                                }
+                    );
+                return query.ToArray();
             }
         }
 
+        public SessionDetail GetSessionById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Sessions
+                    .Single(e => e.SessionId == id && e.OwnerId == _userId);
+                return
+                    new SessionDetail
+                    {
+                        SessionId = entity.SessionId,
+                        ProjectTitle = entity.ProjectTitle,
+                        StartTime = entity.Time,
+                        EndTime = entity.Time + entity.Duration,
+                        Duration = entity.Duration,
+                        ArtistId = entity.ArtistId,
+                        Artist = entity.Artist.FullName(),
+                        ProducerId = entity.ProducerId,
+                        Producer = entity.Producer.FullName()
+                      
+                    };
+            }
+        }
+
+        public bool UpdateSession(SessionEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Sessions
+                    .Single(e => e.SessionId == model.SessionId && e.OwnerId == _userId);
+
+                entity.SessionId = model.SessionId;
+                entity.ProjectTitle = model.ProjectTitle;
+                entity.Time = model.Time;
+                entity.Duration = model.Duration;
+                entity.ArtistId = model.ArtistId;
+                
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteSession(int sessionId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Sessions
+                    .Single(e => e.SessionId == sessionId && e.OwnerId == _userId);
+
+                ctx.Sessions.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
     }
 }

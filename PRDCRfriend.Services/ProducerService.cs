@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.ModelBinding;
 
 namespace PRDCRfriend.Services
 {
@@ -25,11 +26,14 @@ namespace PRDCRfriend.Services
             var entity =
                 new Producer()
                 {
+                    OwnerId = _userId,
                     FirstName = model.FirstName,
                     LastName = model.LastName
                 };
             using (var ctx = new ApplicationDbContext())
             {
+               if (model.FirstName != null)
+
                 ctx.Producers.Add(entity);
 
                 return ctx.SaveChanges() == 1;
@@ -62,11 +66,11 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Producers
-                    .Single(e => e.ProducerId == id);
+                    .Single(e => e.OwnerId == _userId);
                 return
                     new ProducerDetail
                     {
-                        ProducerId = entity.ProducerId,
+                        OwnerId = entity.ProducerId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         PlannerId = entity.PlannerId,
@@ -88,8 +92,8 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .Producers
-                    .Single(e => e.ProducerId == model.ProducerId);
-
+                    .Single(e => e.OwnerId != _userId);
+                
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
 
