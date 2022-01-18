@@ -126,7 +126,7 @@ namespace PRDCRfriend.Services
                         SessionId = e.SessionId,
                         Time = e.Time.ToShortDateString(),
                         ProjectTitle = e.ProjectTitle,
-                        Artist = e.Artist 
+                        Artist = e.Artist.FullName()
                     }).ToArray();
             }
         }
