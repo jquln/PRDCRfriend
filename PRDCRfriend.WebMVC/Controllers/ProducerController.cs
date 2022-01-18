@@ -58,6 +58,70 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateProducerService();
+            var detail = service.GetProducerById(id);
+            var model =
+                new ProducerEdit
+                {
+                    ProducerId = detail.OwnerId,
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName
+                };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ProducerEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ProducerId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateProducerService();
+
+            if (service.UpdateProducer(model))
+            {
+                TempData["SaveResult"] = "Producer was updated!";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Producer could not be updated ]:");
+            return View(model);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateProducerService();
+            var model = svc.GetProducerById(id);
+
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateProducerService();
+            service.DeleteProducer(id);
+
+            TempData["SaveResult"] = "Producer was deleted";
+
+            return RedirectToAction("Index");
+        }
+
+
 
 
         private ProducerService CreateProducerService()

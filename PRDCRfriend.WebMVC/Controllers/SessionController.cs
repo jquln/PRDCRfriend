@@ -56,6 +56,71 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateSessionService();
+            var detail = service.GetSessionById(id);
+            var model =
+                new SessionEdit
+                {
+                    SessionId = detail.SessionId,
+                    ProjectTitle = detail.ProjectTitle,
+                    Time = detail.StartTime,
+                    Duration = detail.Duration,
+                    ArtistId = detail.ArtistId
+                };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, SessionEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.SessionId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateSessionService();
+
+            if (service.UpdateSession(model))
+            {
+                TempData["SaveResult"] = "Your Recording Session was updated!";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Recording Session could not be updated ]:");
+            return View(model);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateSessionService();
+            var model = svc.GetSessionById(id);
+
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateSessionService();
+            service.DeleteSession(id);
+
+            TempData["SaveResult"] = "Your note was deleted";
+
+            return RedirectToAction("Index");
+        }
+
 
 
 
