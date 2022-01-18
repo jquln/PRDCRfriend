@@ -10,7 +10,7 @@ namespace PRDCRfriend.Models
 {
     public class ProducerDetail
     {
-        public int OwnerId { get; set; }
+        public int ProducerId { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

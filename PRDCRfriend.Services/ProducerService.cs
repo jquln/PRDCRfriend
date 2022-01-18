@@ -20,7 +20,7 @@ namespace PRDCRfriend.Services
             _userId = userId;
         }
 
-        
+
         public bool CreateProducer(ProducerCreate model)
         {
             var entity =
@@ -32,9 +32,14 @@ namespace PRDCRfriend.Services
                 };
             using (var ctx = new ApplicationDbContext())
             {
-               if (model.FirstName != null)
+                var existingProducer =
+                  ctx
+                  .Producers
+                  .SingleOrDefault(e => e.OwnerId == _userId);
+                if (existingProducer != null)
+                    return false;
 
-                ctx.Producers.Add(entity);
+                    ctx.Producers.Add(entity);
 
                 return ctx.SaveChanges() == 1;
             }
@@ -46,15 +51,19 @@ namespace PRDCRfriend.Services
             {
                 var query =
                     ctx
-                    .Producers.AsEnumerable()
+                    .Producers
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                         new ProducerListItem
                         {
+                            ProducerId = e.ProducerId,
                             FirstName = e.FirstName,
                             LastName = e.LastName
-                        }).ToArray();
-                return query;
+                        }
+                   );
+                return query.ToArray();
+
 
             }
         }
@@ -70,7 +79,7 @@ namespace PRDCRfriend.Services
                 return
                     new ProducerDetail
                     {
-                        OwnerId = entity.ProducerId,
+                        ProducerId = entity.ProducerId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         PlannerId = entity.PlannerId,
@@ -92,8 +101,8 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .Producers
-                    .Single(e => e.OwnerId != _userId);
-                
+                    .Single(e => e.ProducerId == model.ProducerId && e.OwnerId == _userId);
+
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
 
@@ -108,7 +117,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Producers
-                    .Single(e => e.ProducerId == producerId);
+                    .Single(e => e.ProducerId == producerId && e.OwnerId == _userId);
                 ctx.Producers.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

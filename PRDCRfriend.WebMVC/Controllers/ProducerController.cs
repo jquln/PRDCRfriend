@@ -50,13 +50,14 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
             var svc = CreateProducerService();
-            var model = svc.GetProducerById(id);
+            var model = svc.GetProducerById(1);
 
             return View(model);
         }
+
 
         public ActionResult Edit(int id)
         {
@@ -65,7 +66,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             var model =
                 new ProducerEdit
                 {
-                    ProducerId = detail.OwnerId,
+                    ProducerId = detail.ProducerId,
                     FirstName = detail.FirstName,
                     LastName = detail.LastName
                 };
