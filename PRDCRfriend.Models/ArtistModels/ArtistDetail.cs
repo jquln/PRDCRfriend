@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRDCRfriend.Models.SessionModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace PRDCRfriend.Models.ArtistModels
 
         public string PhoneNumber { get; set; }
 
-
+        public List<SessionListItem> Sessions { get; set; }
 
     }
 }

@@ -9,6 +9,9 @@ namespace PRDCRfriend.Models.SessionModels
 {
     public class SessionProducerCreate
     {
+        [Key]
+        public int SessionId { get; set; }
+
         [Required]
         [Display(Name ="Project Title")]
         public string ProjectTitle { get; set; }

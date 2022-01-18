@@ -12,24 +12,18 @@ namespace PRDCRfriend.Data
         [Key]
         public int PlannerId { get; set; }
 
+        [Required]
         public Guid OwnerId { get; set; }
 
         public string ArtistName { get; set; }
 
+        [Required]
         public string Content { get; set; }
 
-        public string PreProduction { get; set; }
-
-        public string Recording { get; set; }
-
-        public string Editing { get; set; }
-
-        public string Vocals { get; set; }
-
-        public string MixingMastering { get; set; }
-
+        [Required]
         public int ProducerId { get; set; }
 
+        [Required]
         public int SessionId { get; set; }
 
         public string ProjectTitle { get; set; }

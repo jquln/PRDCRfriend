@@ -12,6 +12,8 @@ namespace PRDCRfriend.Data
         [Key]
         public int ArtistId { get; set; }
 
+        public string Session { get; set; }
+
         public Guid OwnerId { get; set; }
 
         [Required]
@@ -30,6 +32,8 @@ namespace PRDCRfriend.Data
         [Required]
         
         public string PhoneNumber { get; set; }
+
+        public virtual List<Session> Sessions { get; set; } = new List<Session>();
 
         //public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
 

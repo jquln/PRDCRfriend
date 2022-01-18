@@ -1,5 +1,6 @@
 ﻿using PRDCRfriend.Data;
 using PRDCRfriend.Models;
+using PRDCRfriend.Models.SessionModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -61,16 +62,52 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Producers
-                    .Single(e => e.ProducerId == id && e.OwnerId == _userId);
+                    .Single(e => e.ProducerId == id);
                 return
                     new ProducerDetail
                     {
                         ProducerId = entity.ProducerId,
                         FirstName = entity.FirstName,
-                        LastName = entity.LastName
+                        LastName = entity.LastName,
+                        PlannerId = entity.PlannerId,
+                        Sessions = entity.Sessions.Select(a => new SessionListItem
+                        {
+                            SessionId = a.SessionId,
+                            ProjectTitle = a.ProjectTitle,
+                            Time = a.Time.ToShortDateString(),
+                            Artist = a.Artist.FullName()
+
+                        }).ToList()
                     };
             }
         }
 
+        public bool UpdateProducer(ProducerEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Producers
+                    .Single(e => e.ProducerId == model.ProducerId);
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteProducer(int producerId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Producers
+                    .Single(e => e.ProducerId == producerId);
+                ctx.Producers.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

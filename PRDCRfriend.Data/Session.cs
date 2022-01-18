@@ -25,15 +25,18 @@ namespace PRDCRfriend.Data
         //Request style "00:00:00" 
         public TimeSpan Duration { get; set; }
 
+
+
         [ForeignKey(nameof(Producer))]
         public int ProducerId { get; set; }
+        public Producer Producer {  get; set; }
 
         [ForeignKey(nameof(Artist))]
         public int ArtistId { get; set; }
-
-        public string Artist { get; set; }
+        public Artist Artist { get; set; }
 
         public virtual List<Artist> Artists { get; set; }
+        public virtual List<Session> Sessions { get; set; } = new List<Session>();
 
     }
 }

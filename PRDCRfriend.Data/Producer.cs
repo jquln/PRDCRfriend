@@ -12,6 +12,8 @@ namespace PRDCRfriend.Data
         [Key]
         public int ProducerId { get; set; }
 
+        public string Session { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using PRDCRfriend.Data;
 using PRDCRfriend.Models.ArtistModels;
+using PRDCRfriend.Models.SessionModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +28,6 @@ namespace PRDCRfriend.Services
                     FirstName = model.FirstName,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
-
-                    
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -74,8 +73,47 @@ namespace PRDCRfriend.Services
                         FirstName= entity.FirstName,
                         ProjectTitle = entity.ProjectTitle,
                         Email = entity.Email,
-                        PhoneNumber= entity.PhoneNumber
+                        PhoneNumber= entity.PhoneNumber,
+                        Sessions = entity.Sessions.Select(a => new SessionListItem
+                        {
+                            SessionId = a.SessionId,
+                            ProjectTitle = a.ProjectTitle,
+                            Time = a.Time.ToShortDateString(),
+                            Artist = a.Artist.FullName()
+
+                        }).ToList()
                     };
+            }
+        }
+
+        public bool UpdateArtist(ArtistEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Artists
+                    .Single(e => e.ArtistId == model.ArtistId);
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.ProjectTitle = model.ProjectTitle;
+                entity.Email = model.Email;
+                entity.PhoneNumber = model.PhoneNumber;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteArtist(int artistId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Artists
+                    .Single(e => e.ArtistId == artistId);
+                ctx.Artists.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
 

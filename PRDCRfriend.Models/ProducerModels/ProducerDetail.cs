@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Bibliography;
+using PRDCRfriend.Models.SessionModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,11 @@ namespace PRDCRfriend.Models
         //public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
 
         
-        public string PlannerContent { get; set; }
+        public string PlannerId { get; set; }
 
-        public virtual List<Artist> Artists { get; set; }
+        public virtual List<string> Artists { get; set; }
+
+        public List<SessionListItem> Sessions { get; set; }
 
     }
 }
