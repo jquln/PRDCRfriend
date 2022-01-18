@@ -11,11 +11,11 @@ namespace PRDCRfriend.Services
 {
     public class ArtistService
     {
-        private readonly Guid _artistId;
+        private readonly Guid _userId;
 
-        public ArtistService(Guid artistId)
+        public ArtistService(Guid userId)
         {
-            _artistId = artistId;
+            _userId = userId;
         }
 
         public bool CreateArtist(ArtistCreate model)
@@ -64,7 +64,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Artists
-                    .Single(e => e.ArtistId == id && e.OwnerId == _artistId);
+                    .Single(e => e.ArtistId == id);
                 return
                     new ArtistDetail
                     {

@@ -10,12 +10,15 @@ namespace PRDCRfriend.Models.ArtistModels
     public class ArtistCreate
     {
         [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Project Title")]
         public string ProjectTitle { get; set; }
 
         [Required]

@@ -9,6 +9,9 @@ namespace PRDCRfriend.Models.ArtistModels
 {
     public class ArtistListItem
     {
+
+        [Required]
+        [Display(Name = "Artist No.")]
         public int ArtistId { get; set; }
 
        public string Name { get; set; }

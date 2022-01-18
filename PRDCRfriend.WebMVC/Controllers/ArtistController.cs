@@ -127,8 +127,8 @@ namespace PRDCRfriend.WebMVC.Controllers
 
         private ArtistService CreateArtistService()
         {
-            var artistId = Guid.Parse(User.Identity.GetUserId());
-            var artistService = new ArtistService(artistId);
+            var _artistId = Guid.Parse(User.Identity.GetUserId());
+            var artistService = new ArtistService(_artistId);
             return artistService;
         }
 
