@@ -18,6 +18,13 @@ namespace PRDCRfriend.Services
 
         public bool CreateSession(SessionCreate model)
         {
+            int day = 01;
+            int month = 01;
+            int year = 2022;
+            int hour = 17;
+            int minute = 30;
+            int second = 30;
+            DateTime date = new DateTime(year, month, day, hour, minute, second);
             var entity =
                 new Session()
                 {
@@ -25,8 +32,10 @@ namespace PRDCRfriend.Services
                     ProjectTitle = model.ProjectTitle,
                     Time = model.Time,
                     Duration = model.Duration,
-                    ArtistFirstName = model.ArtistFirstName,
-                    ArtistLastName = model.ArtistLastName
+                    ProducerId = model.ProducerId,
+                    ArtistId = model.ArtistId,
+                    //ArtistFirstName = model.ArtistFirstName,
+                    //ArtistLastName = model.ArtistLastName
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -46,9 +55,9 @@ namespace PRDCRfriend.Services
                 new Session()
                 {
                     ProjectTitle = model.ProjectTitle,
-                    Time = DateTime.Now,
-                    Duration = model.Duration,
-                    ProducerId = model.ProducerId,
+                    Time = model.Time,
+                    Duration = model.Duration
+                    
                 };
 
             var artist = new Artist()
@@ -126,8 +135,8 @@ namespace PRDCRfriend.Services
                                     SessionId = e.SessionId,
                                     ProjectTitle = e.ProjectTitle,
                                     Time = e.Time.ToShortDateString(),
-                                    Artist = e.Artist.FullName(),
-                                    Producer = e.SessionId.ToString()
+                                   // Artist = e.Artist.FullName(),
+                                   // Producer = e.SessionId.ToString()
                                 }).ToArray();
                     
                 

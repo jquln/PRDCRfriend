@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRDCRfriend.Models.SessionModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,9 +12,7 @@ namespace PRDCRfriend.Models
     {
         public int ProducerId { get; set; }
 
-        [Required]
-        [Display(Name = "Project Title")]
-        public string ProjectTitle { get; set; }
+       
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -23,5 +22,10 @@ namespace PRDCRfriend.Models
 
         public int PlannerId { get; set; }
 
+        [Required]
+        [Display(Name = "Artists")]
+        public virtual List<string> Artists { get; set; }
+
+        public List<SessionListItem> Sessions { get; set; }
     }
 }

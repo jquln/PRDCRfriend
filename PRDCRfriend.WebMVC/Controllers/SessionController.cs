@@ -48,6 +48,22 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("NewArtist")]
+        public ActionResult CreateSessionWithArtist(SessionProducerCreate session)
+        {
+            if (!ModelState.IsValid)
+                return View(session);
+
+            var service = CreateSessionService();
+            if (!service.CreateSessionWithArtist(session))
+                return RedirectToAction("Index");
+
+            return View(session);
+        }
+
+
         public ActionResult Details(int id)
         {
             var svc = CreateSessionService();

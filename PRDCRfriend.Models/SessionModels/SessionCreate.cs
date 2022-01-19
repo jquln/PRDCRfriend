@@ -9,8 +9,6 @@ namespace PRDCRfriend.Models.SessionModels
 {
     public class SessionCreate
     {
-        [Required]
-        public int SessionId { get; set; }
 
         [Required]
         [Display(Name = "Project Title")]
@@ -23,15 +21,21 @@ namespace PRDCRfriend.Models.SessionModels
         [Required]
         public TimeSpan Duration { get; set; }
 
-        [Required]
-        [Display(Name = "First Name")]
-        public string ArtistFirstName { get; set; }
-        [Required]
-        [Display(Name = "Last Name")]
-        public string ArtistLastName { get; set; }
+        //[Required]
+        //[Display(Name = "First Name")]
+        //public string ArtistFirstName { get; set; }
+        //[Required]
+        //[Display(Name = "Last Name")]
+        //public string ArtistLastName { get; set; }
 
-       
-        
+        [Required]
+        public int ProducerId { get; set; }
+
+        [Required]
+        public int ArtistId { get; set; }
+
+
+
 
 
 

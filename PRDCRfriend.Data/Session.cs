@@ -17,9 +17,9 @@ namespace PRDCRfriend.Data
         [Required]
         public string ProjectTitle { get; set; }
 
-        public string ArtistFirstName { get; set; }
+        //public string ArtistFirstName { get; set; }
 
-        public string ArtistLastName { get; set; }
+        //public string ArtistLastName { get; set; }
 
 
         [Required]
