@@ -118,18 +118,19 @@ namespace PRDCRfriend.Services
             {
                 var query =
                     ctx
-                        .Sessions
-                        .Where(e => e.OwnerId == _userId)
-                            .Select(
+                        .Sessions.ToArray();
+                            return query.Select(
                                 e =>
                                 new SessionListItem
                                 {
+                                    SessionId = e.SessionId,
                                     ProjectTitle = e.ProjectTitle,
                                     Time = e.Time.ToShortDateString(),
-                                    Artist = e.Artist.FullName()
-                                }
-                    );
-                return query.ToArray();
+                                    Artist = e.Artist.FullName(),
+                                    Producer = e.SessionId.ToString()
+                                }).ToArray();
+                    
+                
             }
         }
 

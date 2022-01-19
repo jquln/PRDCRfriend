@@ -9,8 +9,12 @@ namespace PRDCRfriend.Models.SessionModels
 {
     public class SessionListItem
     {
+        [Required]
+        [Display(Name = "Recording Session")]
         public int SessionId { get; set; }
 
+        [Required]
+        [Display(Name = "Project Title")]
         public string ProjectTitle { get; set; }
 
         
