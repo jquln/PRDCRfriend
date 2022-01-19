@@ -242,12 +242,12 @@
     <Content Include="Views\Producer\Create.cshtml" />
     <Content Include="Views\Producer\Edit.cshtml" />
     <Content Include="Views\Producer\Delete.cshtml" />
-    <Content Include="Views\Producer\Details.cshtml" />
     <Content Include="Views\Artist\Create.cshtml" />
     <Content Include="Views\Artist\Index.cshtml" />
     <Content Include="Views\Artist\Details.cshtml" />
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Producer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

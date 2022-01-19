@@ -21,5 +21,7 @@ namespace PRDCRfriend.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        public int PlannerId { get; set; }
+
     }
 }
