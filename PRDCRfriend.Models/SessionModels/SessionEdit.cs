@@ -16,7 +16,8 @@ namespace PRDCRfriend.Models.SessionModels
         public string ProjectTitle { get; set; }
 
         [Required]
-        [Display(Name ="Date/Time")]
+        [DataType(DataType.Date)]
+        [Display(Name ="Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
