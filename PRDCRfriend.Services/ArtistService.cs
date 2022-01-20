@@ -78,6 +78,7 @@ namespace PRDCRfriend.Services
                         {
                             SessionId = a.SessionId,
                             ProjectTitle = a.ProjectTitle,
+                            Date = a.Date.ToShortDateString(),
                             Time = a.Time.ToShortDateString(),
                             Artist = a.Artist.FullName()
 

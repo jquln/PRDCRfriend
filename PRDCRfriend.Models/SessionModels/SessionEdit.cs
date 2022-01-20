@@ -15,13 +15,23 @@ namespace PRDCRfriend.Models.SessionModels
 
         public string ProjectTitle { get; set; }
 
+        [Required]
+        [Display(Name ="Date/Time")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
+
+        [Required]
+        [Display(Name = "Time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
 
         [Required]
-        //Request style "00:00:00" 
         public TimeSpan Duration { get; set; }
 
         public int ArtistId { get; set; }
+
+        
 
     }
 }

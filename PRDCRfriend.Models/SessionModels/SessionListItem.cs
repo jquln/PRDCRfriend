@@ -17,7 +17,12 @@ namespace PRDCRfriend.Models.SessionModels
         [Display(Name = "Project Title")]
         public string ProjectTitle { get; set; }
 
-        
+        [Required]
+        [Display(Name = "Date")]
+        public string Date { get; set; }
+
+        [Required]
+        [Display(Name = "Time")]
         public string Time { get; set; }
 
         public string Producer { get; set; }

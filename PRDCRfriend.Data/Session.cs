@@ -23,11 +23,13 @@ namespace PRDCRfriend.Data
 
 
         [Required]
-        public DateTime Time { get; set; }
-
+        public DateTime Date { get; set; }
 
         [Required]
-        //Request style "00:00:00" 
+        public DateTime Time { get; set; }
+        
+
+        [Required] 
         public TimeSpan Duration { get; set; }
 
 

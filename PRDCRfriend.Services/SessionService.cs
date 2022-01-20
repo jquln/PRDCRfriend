@@ -33,10 +33,12 @@ namespace PRDCRfriend.Services
                 {
 
                     ProjectTitle = model.ProjectTitle,
+                    Date = model.Date,
                     Time = model.Time,
                     Duration = model.Duration,
                     ProducerId = model.ProducerId,
                     ArtistId = model.ArtistId,
+                    
                     //ArtistFirstName = model.ArtistFirstName,
                     //ArtistLastName = model.ArtistLastName
                 };
@@ -58,10 +60,11 @@ namespace PRDCRfriend.Services
                 new Session()
                 {
                     ProjectTitle = model.ProjectTitle,
+                    Date = model.Date,
                     Time = model.Time,
                     Duration = model.Duration,
                     ProducerId = model.ProducerId,
-                    ArtistId = model.ArtistId
+                    ArtistId = model.ArtistId,
                     
                 };
 
@@ -97,8 +100,8 @@ namespace PRDCRfriend.Services
 
         public bool SessionNoOverlap(Session session)
         {
-            var newStart = session.Time;
-            var newEnd = session.Time + session.Duration;
+            var newStart = session.Date;
+            var newEnd = session.Date + session.Duration;
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -110,8 +113,8 @@ namespace PRDCRfriend.Services
 
                     foreach (var sesh in producer.Sessions)
                     {
-                        var oldStart = sesh.Time;
-                        var oldEnd = sesh.Time + session.Duration;
+                        var oldStart = sesh.Date;
+                        var oldEnd = sesh.Date + session.Duration;
 
                         bool overlap = oldStart < newEnd && newStart < oldEnd;
                         if (overlap)
@@ -139,7 +142,8 @@ namespace PRDCRfriend.Services
                                 {
                                     SessionId = e.SessionId,
                                     ProjectTitle = e.ProjectTitle,
-                                    Time = e.Time.ToShortDateString(),
+                                    Date = e.Date.ToShortDateString(),
+                                    Time = e.Time.ToShortTimeString(),
                                    // Artist = e.Artist.FullName(),
                                    // Producer = e.SessionId.ToString()
                                 }).ToArray();
@@ -162,8 +166,8 @@ namespace PRDCRfriend.Services
                     {
                         SessionId = entity.SessionId,
                         ProjectTitle = entity.ProjectTitle,
-                        StartTime = entity.Time,
-                        EndTime = entity.Time + entity.Duration,
+                        Date = entity.Date,
+                        Time = entity.Date + entity.Duration,
                         Duration = entity.Duration,
                        // ArtistId = entity.ArtistId,
                        // Artist = entity.Artist.FullName(),
@@ -184,8 +188,9 @@ namespace PRDCRfriend.Services
 
                 entity.SessionId = model.SessionId;
                 entity.ProjectTitle = model.ProjectTitle;
+                entity.Date = model.Date;
                 entity.Time = model.Time;
-                entity.Duration = model.Duration;
+                //entity.Duration = model.Duration;
                 //entity.ArtistId = model.ArtistId;
                 
 

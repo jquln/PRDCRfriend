@@ -18,13 +18,16 @@
             @Html.DisplayNameFor(model => model.ProjectTitle)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Time)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Producer)
+            @* @Html.DisplayNameFor(model => model.Producer)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Artist)
+            @* @Html.DisplayNameFor(model => model.Artist)*@
         </th>
         <th></th>
     </tr>
@@ -38,6 +41,9 @@
             @Html.DisplayFor(modelItem => item.ProjectTitle)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Time)
         </td>
         <td>
@@ -48,7 +54,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.SessionId }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.SessionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SessionId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.SessionId })
         </td>
     </tr>

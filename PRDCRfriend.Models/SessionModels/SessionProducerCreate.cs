@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PRDCRfriend.Data;
+using PRDCRfriend.Models.ArtistModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,11 +15,17 @@ namespace PRDCRfriend.Models.SessionModels
         public int SessionId { get; set; }
 
         [Required]
-        [Display(Name ="Project Title")]
+        [Display(Name = "Project Title")]
         public string ProjectTitle { get; set; }
 
         [Required]
-        [Display(Name = "Date/Time")]
+        [Display(Name = "Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
+
+        [Required]
+        [Display(Name = "Time")]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
 
         [Required]
@@ -25,7 +33,8 @@ namespace PRDCRfriend.Models.SessionModels
 
         [Required]
         [Display(Name = "Artists")]
-        public virtual List<string> Artists { get; set; }
+        public virtual List<Artist> Artists { get; set; } = new List<Artist>();
+           
 
         [Required]
         [Display(Name = "Artist: Last Name")]

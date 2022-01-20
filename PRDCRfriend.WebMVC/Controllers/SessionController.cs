@@ -18,6 +18,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SessionService(userId);
             var model = service.GetSessions();
+           
 
             return View(model);
         }
@@ -81,8 +82,9 @@ namespace PRDCRfriend.WebMVC.Controllers
                 {
                     SessionId = detail.SessionId,
                     ProjectTitle = detail.ProjectTitle,
-                    Time = detail.StartTime,
-                    Duration = detail.Duration,
+                    Date = detail.Date,
+                    Time = detail.Time,
+                   // Duration = detail.Duration,
                     //ArtistId = detail.ArtistId
                 };
 
