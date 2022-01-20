@@ -11,6 +11,8 @@ namespace PRDCRfriend.Models.SessionModels
     {
         public int SessionId { get; set; }
 
+        public int OwnerId { get; set; }
+
         public string ProjectTitle { get; set; }
 
         public DateTime Time { get; set; }

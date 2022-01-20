@@ -180,13 +180,13 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .Sessions
-                    .Single(e => e.SessionId == model.SessionId && e.OwnerId == _userId);
+                    .Single(e => e.SessionId == model.SessionId);
 
                 entity.SessionId = model.SessionId;
                 entity.ProjectTitle = model.ProjectTitle;
                 entity.Time = model.Time;
                 entity.Duration = model.Duration;
-                entity.ArtistId = model.ArtistId;
+                //entity.ArtistId = model.ArtistId;
                 
 
                 return ctx.SaveChanges() == 1;

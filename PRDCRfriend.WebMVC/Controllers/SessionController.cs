@@ -83,7 +83,7 @@ namespace PRDCRfriend.WebMVC.Controllers
                     ProjectTitle = detail.ProjectTitle,
                     Time = detail.StartTime,
                     Duration = detail.Duration,
-                    ArtistId = detail.ArtistId
+                    //ArtistId = detail.ArtistId
                 };
 
             return View(model);
