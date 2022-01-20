@@ -17,14 +17,17 @@ namespace PRDCRfriend.Services
         }
 
         public bool CreateSession(SessionCreate model)
-        {
-            int day = 01;
-            int month = 01;
-            int year = 2022;
-            int hour = 17;
-            int minute = 30;
-            int second = 30;
-            DateTime date = new DateTime(year, month, day, hour, minute, second);
+        { 
+           
+            //    int day = 01;
+            //int month = 01;
+            //int year = 2022;
+            //int hour = 17;
+            //int minute = 30;
+            //int second = 30;
+            //DateTime date = new DateTime(year, month, day, hour, minute, second);
+
+            
             var entity =
                 new Session()
                 {
@@ -56,7 +59,9 @@ namespace PRDCRfriend.Services
                 {
                     ProjectTitle = model.ProjectTitle,
                     Time = model.Time,
-                    Duration = model.Duration
+                    Duration = model.Duration,
+                    ProducerId = model.ProducerId,
+                    ArtistId = model.ArtistId
                     
                 };
 
@@ -147,10 +152,11 @@ namespace PRDCRfriend.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                
                 var entity =
                     ctx
                     .Sessions
-                    .Single(e => e.SessionId == id && e.OwnerId == _userId);
+                    .Single(e => e.SessionId == id);
                 return
                     new SessionDetail
                     {
@@ -159,10 +165,10 @@ namespace PRDCRfriend.Services
                         StartTime = entity.Time,
                         EndTime = entity.Time + entity.Duration,
                         Duration = entity.Duration,
-                        ArtistId = entity.ArtistId,
-                        Artist = entity.Artist.FullName(),
-                        ProducerId = entity.ProducerId,
-                        Producer = entity.Producer.FullName()
+                       // ArtistId = entity.ArtistId,
+                       // Artist = entity.Artist.FullName(),
+                        //ProducerId = entity.ProducerId,
+                       // Producer = entity.Producer.FullName()
                       
                     };
             }

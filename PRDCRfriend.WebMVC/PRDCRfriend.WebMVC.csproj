@@ -183,6 +183,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-Lux.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -251,6 +252,7 @@
     <Content Include="Views\Producer\Index.cshtml" />
     <Content Include="Views\Session\Index.cshtml" />
     <Content Include="Views\Session\Create.cshtml" />
+    <Content Include="Views\Session\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

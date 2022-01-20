@@ -39,6 +39,10 @@ namespace PRDCRfriend.Models.SessionModels
         [Display(Name = "Phone Number")]
         public string ArtistPhoneNumber { get; set; }
 
+        public int ProducerId { get; set; }
+
+        public int ArtistId { get; set; }
+
 
     }
 }

@@ -15,8 +15,9 @@ namespace PRDCRfriend.Models.SessionModels
         public string ProjectTitle { get; set; }
 
         [Required]
-        [Display(Name ="Created")]
+        [Display(Name ="Date")]
         public DateTime Time { get; set; }
+
 
         [Required]
         public TimeSpan Duration { get; set; }
