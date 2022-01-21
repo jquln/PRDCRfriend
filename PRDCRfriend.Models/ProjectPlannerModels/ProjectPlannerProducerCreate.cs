@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRDCRfriend.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,9 +21,11 @@ namespace PRDCRfriend.Models.PlannerModels
         [Display(Name ="Content and Notes")]
         public string Content { get; set; }
 
-        public DateTime StartTime { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public virtual List<ProjectPlanner> ProjectPlanners { get; set; }
+
 
         [Required]
         public int ProducerId { get; set; }
@@ -30,8 +33,7 @@ namespace PRDCRfriend.Models.PlannerModels
         [Required]
         public string ArtistName { get; set; }
 
-        [Required]
-        public DateTime CreatedUtc { get; set; }
+       
 
     }
 }

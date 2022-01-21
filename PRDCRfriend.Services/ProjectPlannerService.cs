@@ -1,5 +1,6 @@
 ﻿using PRDCRfriend.Data;
 using PRDCRfriend.Models.PlannerModels;
+using PRDCRfriend.Models.ProjectPlannerModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,15 @@ namespace PRDCRfriend.Services
             _userId = userId;
         }
 
-        public bool CreateProjectPlanner(PlannerCreate model)
+        public bool CreatePlanner(PlannerCreate model)
         {
             var entity =
                 new ProjectPlanner()
                 {
                     PlannerId = model.PlannerId,
                     ProjectTitle = model.ProjectTitle,
+                    Date = model.Date,
+                    Content = model.Content,
                     ProducerId = model.ProducerId,
                     ArtistName = model.ArtistName
                 };
@@ -30,6 +33,33 @@ namespace PRDCRfriend.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.ProjectPlanners.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool CreateProjectPlannerWithProducer(PlannerProducerCreate model)
+        {
+
+            var planner =
+                new ProjectPlanner()
+                {
+                    ProjectTitle = model.ProjectTitle,
+                    Date = model.Date,
+                    ProducerId = model.ProducerId,
+                    ArtistName = model.ArtistName,
+                    Content = model.Content,
+
+                };
+
+            var producer = new Producer()
+            {
+                ProducerId = model.ProducerId,
+                ProjectPlanners = model.ProjectPlanners,
+            };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.ProjectPlanners.Add(planner);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -46,13 +76,80 @@ namespace PRDCRfriend.Services
                             e =>
                             new PlannerProducerListItem
                             {
-                               PlannerId =e.PlannerId,
-                               ProducerId =e.ProducerId,
-                               ProjectTitle =e.ProjectTitle
+                                PlannerId = e.PlannerId,
+                                ProducerId = e.ProducerId,
+                                ProjectTitle = e.ProjectTitle,
+                                Date = e.Date.ToShortDateString()
+                               
                             }
                       );
                 return query.ToArray();
 
+            }
+        }
+
+        public PlannerDetail GetPlannerById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+
+                var entity =
+                    ctx
+                    .ProjectPlanners
+                    .Single(e => e.PlannerId == id);
+                return
+                    new PlannerDetail
+                    {
+                        PlannerId = entity.PlannerId,
+                        ProjectTitle = entity.ProjectTitle,
+                        Date = entity.Date,
+                        Content = entity.Content,
+                        
+                        
+                        
+                        // ArtistId = entity.ArtistId,
+                        // Artist = entity.Artist.FullName(),
+                        //ProducerId = entity.ProducerId,
+                        // Producer = entity.Producer.FullName()
+
+                    };
+            }
+        }
+
+        public bool UpdateProjectPlanner(ProjectPlannerEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .ProjectPlanners
+                    .Single(e => e.PlannerId == model.PlannerId);
+
+                entity.PlannerId = model.PlannerId;
+                entity.ProjectTitle = model.ProjectTitle;
+                entity.Date = model.Date;
+                entity.Content = model.Content;
+                entity.ArtistName = model.ArtistName;
+                entity.ProducerId = model.ProducerId;
+               
+                
+
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteProjectPlanner(int plannerId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .ProjectPlanners
+                    .Single(e => e.PlannerId == plannerId && e.OwnerId == _userId);
+
+                ctx.ProjectPlanners.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
 

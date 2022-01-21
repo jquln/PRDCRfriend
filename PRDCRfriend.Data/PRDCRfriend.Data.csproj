@@ -71,6 +71,10 @@
     <Compile Include="Migrations\202201202049366_SessionMigration.designer.cs">
       <DependentUpon>202201202049366_SessionMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201211630081_ProjectPlannerMigration.cs" />
+    <Compile Include="Migrations\202201211630081_ProjectPlannerMigration.designer.cs">
+      <DependentUpon>202201211630081_ProjectPlannerMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Producer.cs" />
     <Compile Include="ProjectPlanner.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201202049366_SessionMigration.resx">
       <DependentUpon>202201202049366_SessionMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211630081_ProjectPlannerMigration.resx">
+      <DependentUpon>202201211630081_ProjectPlannerMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

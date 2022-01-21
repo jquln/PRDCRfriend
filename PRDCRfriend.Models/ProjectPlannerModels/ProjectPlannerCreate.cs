@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PRDCRfriend.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace PRDCRfriend.Models.PlannerModels
 {
@@ -17,7 +19,10 @@ namespace PRDCRfriend.Models.PlannerModels
         public string ProjectTitle { get; set; }
 
         [Required]
-        public DateTime Time { get; set; }
+        public DateTime Date { get; set; }
+
+        public string Content { get; set; }
+        public List<ProjectPlanner> ProjectPlanners { get; set; }
 
         [Required]
         public int ProducerId { get; set; }

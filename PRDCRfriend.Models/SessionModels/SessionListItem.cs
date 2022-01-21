@@ -21,6 +21,7 @@ namespace PRDCRfriend.Models.SessionModels
         [Display(Name = "Date")]
         public string Date { get; set; }
 
+
         [Required]
         [Display(Name = "Time")]
         public string Time { get; set; }

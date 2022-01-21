@@ -25,6 +25,7 @@ namespace PRDCRfriend.Data
         public virtual List<Session> Sessions { get; set; } = new List<Session>();
 
         public string PlannerId { get; set; }
+        public virtual List<ProjectPlanner> ProjectPlanners { get; set; }
 
 
 

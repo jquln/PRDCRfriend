@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace PRDCRfriend.Models.PlannerModels
 {
@@ -14,11 +15,16 @@ namespace PRDCRfriend.Models.PlannerModels
 
         public string ArtistName { get; set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime Date { get; set; }
 
-        public DateTime EndTime { get; set; }
+        
 
         public int ProducerId { get; set; }
+
+        public string Content { get; set; }
+
+        public List<Content> ContentList { get; set; }
+       
 
         public string PreProduction { get; set; }
 

@@ -14,6 +14,8 @@ namespace PRDCRfriend.Models.ProjectPlannerModels
 
         public int ProducerId { get; set; }
 
+        public DateTime Date { get; set; }
+
         public string Content { get; set; }
 
         public string ArtistName { get; set; }

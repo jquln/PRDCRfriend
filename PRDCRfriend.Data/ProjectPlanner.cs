@@ -23,14 +23,13 @@ namespace PRDCRfriend.Data
         [Required]
         public int ProducerId { get; set; }
 
-        [Required]
-        public int SessionId { get; set; }
+      
 
         public string ProjectTitle { get; set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime Date { get; set; }
 
-        public DateTime EndTime { get; set; }
+       
 
     }
 }
