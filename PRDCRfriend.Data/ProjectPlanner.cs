@@ -15,7 +15,9 @@ namespace PRDCRfriend.Data
         [Required]
         public Guid OwnerId { get; set; }
 
-        public string ArtistName { get; set; }
+        public string ArtistFirstName { get; set; }
+        public string ArtistLastName { get; set; }
+       public string Artist { get; set; }
 
         [Required]
         public string Content { get; set; }
@@ -29,7 +31,8 @@ namespace PRDCRfriend.Data
 
         public DateTime Date { get; set; }
 
-       
+        public string FullName() => $"{ArtistLastName}  {ArtistFirstName}";
+
 
     }
 }

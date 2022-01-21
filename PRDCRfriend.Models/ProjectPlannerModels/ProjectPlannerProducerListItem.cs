@@ -13,13 +13,16 @@ namespace PRDCRfriend.Models.PlannerModels
 
         public int ProducerId { get; set; }
 
+        [Required]
+        public string Artist { get; set; }
+
         public string ProjectTitle { get; set; }
 
         [Required]
         [Display(Name = "Date")]
         public string Date { get; set; }
 
-        public string ArtistName { get; set; }
+       
 
         public Content PlannerContent { get; set; }
 

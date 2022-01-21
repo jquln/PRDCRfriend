@@ -22,12 +22,12 @@ namespace PRDCRfriend.Services
             var entity =
                 new ProjectPlanner()
                 {
-                    PlannerId = model.PlannerId,
+                  
                     ProjectTitle = model.ProjectTitle,
                     Date = model.Date,
                     Content = model.Content,
                     ProducerId = model.ProducerId,
-                    ArtistName = model.ArtistName
+                    Artist = model.Artist
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -45,8 +45,8 @@ namespace PRDCRfriend.Services
                 {
                     ProjectTitle = model.ProjectTitle,
                     Date = model.Date,
-                    ProducerId = model.ProducerId,
-                    ArtistName = model.ArtistName,
+                    //ProducerId = model.ProducerId,
+                    Artist = model.Artist,
                     Content = model.Content,
 
                 };
@@ -60,6 +60,7 @@ namespace PRDCRfriend.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.ProjectPlanners.Add(planner);
+
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -70,20 +71,19 @@ namespace PRDCRfriend.Services
             {
                 var query =
                     ctx
-                    .ProjectPlanners
-                    .Where(e => e.OwnerId == _userId)
-                        .Select(
+                    .ProjectPlanners.ToArray();
+                    return query
+                    .Select(
                             e =>
                             new PlannerProducerListItem
                             {
                                 PlannerId = e.PlannerId,
                                 ProducerId = e.ProducerId,
                                 ProjectTitle = e.ProjectTitle,
-                                Date = e.Date.ToShortDateString()
+                                Date = e.Date.ToShortDateString(),
+                                //Artist = e.Artist.FullName(),
                                
-                            }
-                      );
-                return query.ToArray();
+                            }).ToArray();
 
             }
         }
@@ -108,7 +108,7 @@ namespace PRDCRfriend.Services
                         
                         
                         // ArtistId = entity.ArtistId,
-                        // Artist = entity.Artist.FullName(),
+                         //Artist = entity.Artist.FullName(),
                         //ProducerId = entity.ProducerId,
                         // Producer = entity.Producer.FullName()
 
@@ -128,7 +128,7 @@ namespace PRDCRfriend.Services
                 entity.ProjectTitle = model.ProjectTitle;
                 entity.Date = model.Date;
                 entity.Content = model.Content;
-                entity.ArtistName = model.ArtistName;
+                entity.Artist = model.Artist;
                 entity.ProducerId = model.ProducerId;
                
                 
@@ -145,7 +145,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .ProjectPlanners
-                    .Single(e => e.PlannerId == plannerId && e.OwnerId == _userId);
+                    .Single(e => e.PlannerId == plannerId);
 
                 ctx.ProjectPlanners.Remove(entity);
 

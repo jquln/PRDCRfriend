@@ -27,7 +27,7 @@ namespace PRDCRfriend.Models.SessionModels
         public string Time { get; set; }
 
         public string Producer { get; set; }
-
+        [Required]
         public string Artist { get; set; }
 
     }

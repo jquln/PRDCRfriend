@@ -18,7 +18,7 @@ namespace PRDCRfriend.Models.ProjectPlannerModels
 
         public string Content { get; set; }
 
-        public string ArtistName { get; set; }
+        public string Artist { get; set; }
 
 
     }

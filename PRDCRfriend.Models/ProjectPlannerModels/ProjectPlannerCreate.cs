@@ -19,6 +19,8 @@ namespace PRDCRfriend.Models.PlannerModels
         public string ProjectTitle { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         public string Content { get; set; }
@@ -29,7 +31,7 @@ namespace PRDCRfriend.Models.PlannerModels
 
         [Required]
         [Display(Name = "Artist Name")]
-        public string ArtistName { get; set; }
+        public string Artist { get; set; }
 
     }
 }

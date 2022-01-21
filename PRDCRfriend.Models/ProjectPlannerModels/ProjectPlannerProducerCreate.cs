@@ -31,7 +31,7 @@ namespace PRDCRfriend.Models.PlannerModels
         public int ProducerId { get; set; }
 
         [Required]
-        public string ArtistName { get; set; }
+        public string Artist { get; set; }
 
        
 

@@ -16,7 +16,11 @@ namespace PRDCRfriend.WebMVC.Controllers
         // GET: ProjectPlanner
         public ActionResult Index()
         {
-            return View();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ProjectPlannerService(userId);
+            var model = service.GetPlanners();
+
+            return View(model);
         }
 
         //GET
@@ -35,11 +39,11 @@ namespace PRDCRfriend.WebMVC.Controllers
 
             if (service.CreatePlanner(model))
             {
-                TempData["SaveResult"] = "Your Recording Session was scheduled!";
+                TempData["SaveResult"] = "Your Planner was created!";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Your Recording Session was not scheduled ]:");
+            ModelState.AddModelError("", "Your Planner was not created");
 
             return View(model);
         }
@@ -77,7 +81,7 @@ namespace PRDCRfriend.WebMVC.Controllers
                   
                     ProjectTitle = detail.ProjectTitle,
                     Date = detail.Date,
-                    ArtistName = detail.ArtistName,
+                    Artist = detail.Artist,
                     Content = detail.Content,
                     ProducerId = detail.ProducerId,
                     
@@ -120,6 +124,19 @@ namespace PRDCRfriend.WebMVC.Controllers
 
             return View(model);
 
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreatePlannerService();
+            service.DeleteProjectPlanner(id);
+
+            TempData["SaveResult"] = "Your project planner was deleted";
+
+            return RedirectToAction("Index");
         }
 
 
