@@ -9,34 +9,47 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
                 @Html.ActionLink("PRDCRfriend", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Producer", "Index", "Producer")</li>
-                        <li>@Html.ActionLink("Artist", "Index", "Artist")</li>
-                        <li>@Html.ActionLink("Planner", "Index", "ProjectPlanner")</li>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                @if (User.Identity.IsAuthenticated)
+                {
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Producer", "Index", "Producer")
+                        <a class="nav-link" href="#">Producer</a>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Artist", "Index", "Artist")
+                        <a class="nav-link" href="#">Artist</a>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Session", "Index", "Session")
+                        <a class="nav-link" href="#">Recording Sessions</a>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Planner", "Index", "ProjectPlanner")
+                        <a class="nav-link" href="#">Project Planner</a>
+                    </li>
 
                 </ul>
-                @Html.Partial("_LoginPartial")
+                }
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
