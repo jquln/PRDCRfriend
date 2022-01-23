@@ -22,16 +22,16 @@ namespace PRDCRfriend.Services
             var entity =
                 new ProjectPlanner()
                 {
-                  
                     ProjectTitle = model.ProjectTitle,
                     Date = model.Date,
                     Content = model.Content,
-                    ProducerId = model.ProducerId,
-                    Artist = model.Artist
+                    //ProducerId = model.ProducerId,
+                    //ArtistId = model.ArtistId
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
+                
                 ctx.ProjectPlanners.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -45,7 +45,7 @@ namespace PRDCRfriend.Services
                 {
                     ProjectTitle = model.ProjectTitle,
                     Date = model.Date,
-                    //ProducerId = model.ProducerId,
+                    ProducerId = model.ProducerId,
                     Artist = model.Artist,
                     Content = model.Content,
 
@@ -53,7 +53,7 @@ namespace PRDCRfriend.Services
 
             var producer = new Producer()
             {
-                ProducerId = model.ProducerId,
+                Id = model.Id,
                 ProjectPlanners = model.ProjectPlanners,
             };
 
@@ -77,7 +77,7 @@ namespace PRDCRfriend.Services
                             e =>
                             new PlannerProducerListItem
                             {
-                                PlannerId = e.PlannerId,
+                                Id = e.Id,
                                 ProducerId = e.ProducerId,
                                 ProjectTitle = e.ProjectTitle,
                                 Date = e.Date.ToShortDateString(),
@@ -96,11 +96,11 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .ProjectPlanners
-                    .Single(e => e.PlannerId == id);
+                    .Single(e => e.Id == id);
                 return
                     new PlannerDetail
                     {
-                        PlannerId = entity.PlannerId,
+                       
                         ProjectTitle = entity.ProjectTitle,
                         Date = entity.Date,
                         Content = entity.Content,
@@ -122,9 +122,9 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .ProjectPlanners
-                    .Single(e => e.PlannerId == model.PlannerId);
+                    .Single(e => e.Id == model.Id);
 
-                entity.PlannerId = model.PlannerId;
+                entity.Id = model.Id;
                 entity.ProjectTitle = model.ProjectTitle;
                 entity.Date = model.Date;
                 entity.Content = model.Content;
@@ -145,7 +145,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .ProjectPlanners
-                    .Single(e => e.PlannerId == plannerId);
+                    .Single(e => e.Id == plannerId);
 
                 ctx.ProjectPlanners.Remove(entity);
 

@@ -11,6 +11,7 @@ using System.Web.Mvc;
 namespace PRDCRfriend.WebMVC.Controllers
 {
     [Authorize]
+    
     public class ArtistController : Controller
     {
         // GET: Artist
@@ -25,6 +26,7 @@ namespace PRDCRfriend.WebMVC.Controllers
         }
 
         // GET
+        
         public ActionResult Create()
         {
             return View();
@@ -33,6 +35,7 @@ namespace PRDCRfriend.WebMVC.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Artist")]
         public ActionResult Create(ArtistCreate model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -50,6 +53,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+       
         public ActionResult Details(int id)
         {
             var svc = CreateArtistService();
@@ -58,6 +62,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             return View(model);
         }
 
+        
         public ActionResult Edit(int id)
         {
             var service = CreateArtistService();
@@ -65,7 +70,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             var model =
                 new ArtistEdit
                 {
-                    ArtistId = detail.ArtistId,
+                    
                     ProjectTitle = detail.ProjectTitle,
                     Email = detail.Email,
                     PhoneNumber = detail.PhoneNumber
@@ -80,7 +85,7 @@ namespace PRDCRfriend.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.ArtistId != id)
+            if (model.Id != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

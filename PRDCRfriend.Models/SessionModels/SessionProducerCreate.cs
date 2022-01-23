@@ -11,8 +11,7 @@ namespace PRDCRfriend.Models.SessionModels
 {
     public class SessionProducerCreate
     {
-        [Key]
-        public int SessionId { get; set; }
+        
 
         [Required]
         [Display(Name = "Project Title")]
@@ -33,7 +32,7 @@ namespace PRDCRfriend.Models.SessionModels
 
         [Required]
         [Display(Name = "Artists")]
-        public virtual List<Artist> Artists { get; set; } = new List<Artist>();
+        public List<Artist> Artists { get; set; } 
            
 
         [Required]
@@ -49,8 +48,6 @@ namespace PRDCRfriend.Models.SessionModels
         public string ArtistPhoneNumber { get; set; }
 
         public int ProducerId { get; set; }
-
-        public int ArtistId { get; set; }
 
 
     }

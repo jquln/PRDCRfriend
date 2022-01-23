@@ -48,7 +48,7 @@ namespace PRDCRfriend.Services
                         e =>
                         new ArtistListItem
                         {
-                            ArtistId = e.ArtistId,
+                            
                             Name = e.FullName(),
                             ProjectTitle = e.ProjectTitle
                         }).ToArray();
@@ -64,11 +64,11 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Artists
-                    .Single(e => e.ArtistId == id);
+                    .Single(e => e.Id == id);
                 return
                     new ArtistDetail
                     {
-                        ArtistId = entity.ArtistId,
+                        Id = entity.Id,
                         LastName = entity.LastName,
                         FirstName= entity.FirstName,
                         ProjectTitle = entity.ProjectTitle,
@@ -76,7 +76,7 @@ namespace PRDCRfriend.Services
                         PhoneNumber= entity.PhoneNumber,
                         Sessions = entity.Sessions.Select(a => new SessionListItem
                         {
-                            SessionId = a.SessionId,
+                            Id = a.Id,
                             ProjectTitle = a.ProjectTitle,
                             Date = a.Date.ToShortDateString(),
                             Time = a.Time.ToShortDateString(),
@@ -93,7 +93,7 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .Artists
-                    .Single(e => e.ArtistId == model.ArtistId);
+                    .Single(e => e.Id == model.Id);
 
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
@@ -112,7 +112,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Artists
-                    .Single(e => e.ArtistId == artistId);
+                    .Single(e => e.Id == artistId);
                 ctx.Artists.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

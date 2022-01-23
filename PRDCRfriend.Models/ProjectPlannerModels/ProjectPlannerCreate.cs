@@ -11,8 +11,6 @@ namespace PRDCRfriend.Models.PlannerModels
 {
     public class PlannerCreate
     {
-        [Required]
-        public int PlannerId { get; set; }
 
         [Required]
         [Display(Name = "Project Title")]
@@ -24,7 +22,6 @@ namespace PRDCRfriend.Models.PlannerModels
         public DateTime Date { get; set; }
 
         public string Content { get; set; }
-        public List<ProjectPlanner> ProjectPlanners { get; set; }
 
         [Required]
         public int ProducerId { get; set; }
@@ -32,6 +29,8 @@ namespace PRDCRfriend.Models.PlannerModels
         [Required]
         [Display(Name = "Artist Name")]
         public string Artist { get; set; }
+        public int ArtistId { get; set; }
+        public Contents PlannerContent { get; set; }
 
     }
 }

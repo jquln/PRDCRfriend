@@ -59,27 +59,6 @@
   <ItemGroup>
     <Compile Include="Artist.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202201181908515_InitialCreate.cs" />
-    <Compile Include="Migrations\202201181908515_InitialCreate.designer.cs">
-      <DependentUpon>202201181908515_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201191953432_Initial.cs" />
-    <Compile Include="Migrations\202201191953432_Initial.designer.cs">
-      <DependentUpon>202201191953432_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201202049366_SessionMigration.cs" />
-    <Compile Include="Migrations\202201202049366_SessionMigration.designer.cs">
-      <DependentUpon>202201202049366_SessionMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201211630081_ProjectPlannerMigration.cs" />
-    <Compile Include="Migrations\202201211630081_ProjectPlannerMigration.designer.cs">
-      <DependentUpon>202201211630081_ProjectPlannerMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201211805028_PlannerMigration.cs" />
-    <Compile Include="Migrations\202201211805028_PlannerMigration.designer.cs">
-      <DependentUpon>202201211805028_PlannerMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Producer.cs" />
     <Compile Include="ProjectPlanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,23 +68,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-2.0.0.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201181908515_InitialCreate.resx">
-      <DependentUpon>202201181908515_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201191953432_Initial.resx">
-      <DependentUpon>202201191953432_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201202049366_SessionMigration.resx">
-      <DependentUpon>202201202049366_SessionMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201211630081_ProjectPlannerMigration.resx">
-      <DependentUpon>202201211630081_ProjectPlannerMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201211805028_PlannerMigration.resx">
-      <DependentUpon>202201211805028_PlannerMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\accordion.css" />

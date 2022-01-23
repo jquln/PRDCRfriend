@@ -28,7 +28,7 @@ namespace PRDCRfriend.Services
                 {
                     OwnerId = _userId,
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -57,7 +57,7 @@ namespace PRDCRfriend.Services
                         e =>
                         new ProducerListItem
                         {
-                            ProducerId = e.ProducerId,
+                            Id = e.Id,
                             FirstName = e.FirstName,
                             LastName = e.LastName
                         }
@@ -79,13 +79,12 @@ namespace PRDCRfriend.Services
                 return
                     new ProducerDetail
                     {
-                        ProducerId = entity.ProducerId,
+                        Id = entity.Id,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
-                        PlannerId = entity.PlannerId,
                         Sessions = entity.Sessions.Select(a => new SessionListItem
                         {
-                            SessionId = a.SessionId,
+                            Id = a.Id,
                             ProjectTitle = a.ProjectTitle,
                             Date = a.Date.ToShortDateString(),
                             Time = a.Time.ToShortDateString(),
@@ -102,7 +101,7 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .Producers
-                    .Single(e => e.ProducerId == model.ProducerId && e.OwnerId == _userId);
+                    .Single(e => e.Id == model.Id && e.OwnerId == _userId);
 
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
@@ -118,7 +117,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Producers
-                    .Single(e => e.ProducerId == producerId && e.OwnerId == _userId);
+                    .Single(e => e.Id == producerId && e.OwnerId == _userId);
                 ctx.Producers.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

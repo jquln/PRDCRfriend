@@ -11,7 +11,7 @@ namespace PRDCRfriend.Models.PlannerModels
     public class PlannerProducerCreate
     {
         [Required]
-        public int PlannerId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Display(Name = "Project Title")]

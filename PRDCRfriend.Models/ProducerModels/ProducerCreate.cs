@@ -10,7 +10,6 @@ namespace PRDCRfriend.Models
     public class ProducerCreate
     {
        
-
         [Required]
         [Display(Name ="First Name")]
         [MinLength(2, ErrorMessage ="Please enter at least 2 characters.")]
@@ -23,7 +22,7 @@ namespace PRDCRfriend.Models
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
         public string LastName { get; set; }
 
-        
+       
         
 
     }

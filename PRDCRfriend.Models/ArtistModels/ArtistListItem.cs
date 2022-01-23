@@ -12,9 +12,10 @@ namespace PRDCRfriend.Models.ArtistModels
 
         [Required]
         [Display(Name = "Artist No.")]
-        public int ArtistId { get; set; }
+        public int Id { get; set; }
 
-       public string Name { get; set; }
+        [Display(Name = "Artist")]
+        public string Name { get; set; }
 
         [Display(Name ="Project Title")]
         public string ProjectTitle { get; set; }

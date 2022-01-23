@@ -44,14 +44,13 @@ namespace PRDCRfriend.WebMVC.Controllers
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Your Recording Session was not scheduled ]:");
+            ModelState.AddModelError("", "Your Recording Session was not scheduled...");
 
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("NewArtist")]
         public ActionResult CreateSessionWithArtist(SessionProducerCreate session)
         {
             if (!ModelState.IsValid)
@@ -80,7 +79,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             var model =
                 new SessionEdit
                 {
-                    SessionId = detail.SessionId,
+                    Id = detail.Id,
                     ProjectTitle = detail.ProjectTitle,
                     Date = detail.Date,
                     Time = detail.Time,
@@ -97,7 +96,7 @@ namespace PRDCRfriend.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.SessionId != id)
+            if (model.Id != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

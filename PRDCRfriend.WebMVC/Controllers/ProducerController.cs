@@ -66,7 +66,7 @@ namespace PRDCRfriend.WebMVC.Controllers
             var model =
                 new ProducerEdit
                 {
-                    ProducerId = detail.ProducerId,
+                    Id = detail.Id,
                     FirstName = detail.FirstName,
                     LastName = detail.LastName
                 };
@@ -80,7 +80,7 @@ namespace PRDCRfriend.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.ProducerId != id)
+            if (model.Id != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -94,15 +94,15 @@ namespace PRDCRfriend.WebMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Producer could not be updated ]:");
+            ModelState.AddModelError("", "Producer could not be updated");
             return View(model);
         }
 
         [ActionName("Delete")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             var svc = CreateProducerService();
-            var model = svc.GetProducerById(id);
+            var model = svc.GetProducerById(1);
 
 
             return View(model);

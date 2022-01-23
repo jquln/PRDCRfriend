@@ -8,7 +8,7 @@ namespace PRDCRfriend.Models.SessionModels
 {
     public class SessionDetail
     {
-        public int SessionId { get; set; }
+        public int Id { get; set; }
 
         public string ProjectTitle { get; set; }
 
@@ -20,10 +20,11 @@ namespace PRDCRfriend.Models.SessionModels
 
         public int ProducerId { get; set; }
 
+        public string Producer { get; set; }
+
         public int ArtistId { get; set; }
 
         public string Artist { get; set; }
-        public string Producer { get; set; }
 
     }
 }

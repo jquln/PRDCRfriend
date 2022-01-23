@@ -50,7 +50,6 @@ namespace PRDCRfriend.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("NewPlanner")]
         public ActionResult CreatePlannerWithProducer(PlannerProducerCreate planner)
         {
             if (!ModelState.IsValid)
@@ -97,7 +96,7 @@ namespace PRDCRfriend.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.PlannerId != id)
+            if (model.Id != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

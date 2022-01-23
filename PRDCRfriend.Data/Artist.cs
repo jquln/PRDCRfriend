@@ -10,7 +10,7 @@ namespace PRDCRfriend.Data
     public class Artist
     {
         [Key]
-        public int ArtistId { get; set; }
+        public int Id { get; set; }
 
         public string Session { get; set; }
 

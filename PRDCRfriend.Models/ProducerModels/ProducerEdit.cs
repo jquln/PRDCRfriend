@@ -9,8 +9,8 @@ namespace PRDCRfriend.Models
 {
     public class ProducerEdit
     {
-        [Required]
-        public int ProducerId { get; set; }
+        
+        public int Id { get; set; }
 
         [Required]
         public string FirstName { get; set; }

@@ -11,7 +11,7 @@ namespace PRDCRfriend.Data
     public class Session
     {
         [Key]
-        public int SessionId { get; set; }
+        public int Id { get; set; }
         public Guid OwnerId { get; set; }
 
         [Required]
@@ -36,11 +36,11 @@ namespace PRDCRfriend.Data
 
         [ForeignKey(nameof(Producer))]
         public int ProducerId { get; set; }
-        public Producer Producer {  get; set; }
+        public virtual Producer Producer {  get; set; }
 
         [ForeignKey(nameof(Artist))]
         public int ArtistId { get; set; }
-        public Artist Artist { get; set; }
+        public virtual Artist Artist { get; set; }
         
 
         public virtual List<Artist> Artists { get; set; }

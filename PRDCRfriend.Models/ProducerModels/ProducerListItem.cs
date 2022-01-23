@@ -10,8 +10,8 @@ namespace PRDCRfriend.Models
 {
     public class ProducerListItem
     {
-        public int ProducerId { get; set; }
-
+        [Required]
+        public int Id { get; set; }
        
         [Required]
         [Display(Name = "First Name")]
@@ -19,7 +19,8 @@ namespace PRDCRfriend.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
+        
+        [Display(Name ="Project Planner")]
         public int PlannerId { get; set; }
 
         [Required]

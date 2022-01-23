@@ -64,7 +64,6 @@ namespace PRDCRfriend.Services
                     Time = model.Time,
                     Duration = model.Duration,
                     ProducerId = model.ProducerId,
-                    ArtistId = model.ArtistId,
                     
                 };
 
@@ -86,8 +85,8 @@ namespace PRDCRfriend.Services
                     if (ctx.SaveChanges() == 1)
                     {
 
-                        var artistdbObject = ctx.Artists.OrderByDescending(x => x.ArtistId).FirstOrDefault();
-                        session.ArtistId = artistdbObject.ArtistId;
+                        var artistdbObject = ctx.Artists.OrderByDescending(x => x.Id).FirstOrDefault();
+                        session.Id = artistdbObject.Id;
                         ctx.Artists.Add(artist);
                         return ctx.SaveChanges() == 1;
 
@@ -106,7 +105,7 @@ namespace PRDCRfriend.Services
             using (var ctx = new ApplicationDbContext())
             {
 
-                var producer = ctx.Producers.Single(x => x.ProducerId == session.ProducerId);
+                var producer = ctx.Producers.Single(x => x.Id == session.Id);
 
                 if (producer != null)
                 {
@@ -140,7 +139,7 @@ namespace PRDCRfriend.Services
                                 e =>
                                 new SessionListItem
                                 {
-                                    SessionId = e.SessionId,
+                                    Id = e.Id,
                                     ProjectTitle = e.ProjectTitle,
                                     Date = e.Date.ToShortDateString(),
                                     Time = e.Time.ToShortTimeString(),
@@ -160,19 +159,19 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Sessions
-                    .Single(e => e.SessionId == id);
+                    .Single(e => e.Id == id);
                 return
                     new SessionDetail
                     {
-                        SessionId = entity.SessionId,
+                        Id = entity.Id,
                         ProjectTitle = entity.ProjectTitle,
                         Date = entity.Date,
                         Time = entity.Date + entity.Duration,
                         Duration = entity.Duration,
                        // ArtistId = entity.ArtistId,
-                       // Artist = entity.Artist.FullName(),
+                        Artist = entity.Artist.FullName(),
                         //ProducerId = entity.ProducerId,
-                       // Producer = entity.Producer.FullName()
+                        Producer = entity.Producer.FullName()
                       
                     };
             }
@@ -184,9 +183,9 @@ namespace PRDCRfriend.Services
             {
                 var entity = ctx
                     .Sessions
-                    .Single(e => e.SessionId == model.SessionId);
+                    .Single(e => e.Id == model.Id);
 
-                entity.SessionId = model.SessionId;
+                entity.Id = model.Id;
                 entity.ProjectTitle = model.ProjectTitle;
                 entity.Date = model.Date;
                 entity.Time = model.Time;
@@ -205,7 +204,7 @@ namespace PRDCRfriend.Services
                 var entity =
                     ctx
                     .Sessions
-                    .Single(e => e.SessionId == sessionId && e.OwnerId == _userId);
+                    .Single(e => e.Id == sessionId && e.OwnerId == _userId);
 
                 ctx.Sessions.Remove(entity);
 

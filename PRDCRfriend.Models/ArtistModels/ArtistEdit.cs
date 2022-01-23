@@ -10,7 +10,7 @@ namespace PRDCRfriend.Models.ArtistModels
     public class ArtistEdit
     {
         [Required]
-        public int ArtistId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string LastName { get; set; }
@@ -19,6 +19,7 @@ namespace PRDCRfriend.Models.ArtistModels
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Project Title")]
         public string ProjectTitle { get; set; }
 
         [Required]
@@ -26,7 +27,7 @@ namespace PRDCRfriend.Models.ArtistModels
         public string Email { get; set; }
 
         [Required]
-        
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
     }

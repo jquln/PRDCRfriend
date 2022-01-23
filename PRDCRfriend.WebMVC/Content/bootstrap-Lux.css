@@ -4351,7 +4351,7 @@ fieldset:disabled .btn {
 .nav-link.disabled {
     color: #919aa1;
     pointer-events: none;
-    cursor: default;
+    cursor: default; /*potentially the problem*/
 }
 
 .nav-tabs {
@@ -4383,7 +4383,7 @@ fieldset:disabled .btn {
         }
 
     .nav-tabs .dropdown-menu {
-        margin-top: -1px;
+        margin-top: -1px; /*potentially the problem*/
     }
 
 .nav-pills .nav-link {

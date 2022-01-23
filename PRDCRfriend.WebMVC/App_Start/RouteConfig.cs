@@ -13,6 +13,8 @@ namespace PRDCRfriend.WebMVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             //routes.MapRoute();
             routes.MapRoute(
                 name: "Default",

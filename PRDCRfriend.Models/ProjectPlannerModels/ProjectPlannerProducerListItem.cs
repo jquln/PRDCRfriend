@@ -9,7 +9,7 @@ namespace PRDCRfriend.Models.PlannerModels
 {
     public class PlannerProducerListItem
     {
-        public int PlannerId { get; set; }
+        public int Id { get; set; }
 
         public int ProducerId { get; set; }
 
@@ -21,19 +21,5 @@ namespace PRDCRfriend.Models.PlannerModels
         [Required]
         [Display(Name = "Date")]
         public string Date { get; set; }
-
-       
-
-        public Content PlannerContent { get; set; }
-
-    }
-
-    public enum Content
-    {
-        PreProduction,
-        Recording,
-        Editing,
-        Vocals,
-        MixingMastering
     }
 }

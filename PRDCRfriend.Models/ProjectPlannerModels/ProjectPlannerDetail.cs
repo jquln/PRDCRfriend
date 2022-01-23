@@ -9,7 +9,6 @@ namespace PRDCRfriend.Models.PlannerModels
 {
     public class PlannerDetail
     {
-        public int PlannerId { get; set; }
 
         public string ProjectTitle { get; set; }
 
