@@ -23,6 +23,7 @@ namespace PRDCRfriend.Services
             var entity =
                 new Artist()
                 {
+                    OwnerId = _userId,
                     ProjectTitle = model.ProjectTitle,
                     LastName = model.LastName,
                     FirstName = model.FirstName,
@@ -48,7 +49,7 @@ namespace PRDCRfriend.Services
                         e =>
                         new ArtistListItem
                         {
-                            
+                            Id = e.Id,
                             Name = e.FullName(),
                             ProjectTitle = e.ProjectTitle
                         }).ToArray();

@@ -17,8 +17,8 @@ namespace PRDCRfriend.WebMVC.Controllers
         // GET: Artist
         public ActionResult Index()
         {
-            var artistId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ArtistService(artistId);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ArtistService(userId);
             var model = service.GetArtists();
 
             return View(model);
@@ -35,14 +35,13 @@ namespace PRDCRfriend.WebMVC.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Artist")]
-        public ActionResult Create(ArtistCreate model)
+        public ActionResult Create(ArtistCreate artists)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(artists);
 
             var service = CreateArtistService();
 
-            if (service.CreateArtist(model))
+            if (service.CreateArtist(artists))
             {
                 TempData["SaveResult"] = "Artist was created!";
                 return RedirectToAction("Index");
@@ -50,7 +49,7 @@ namespace PRDCRfriend.WebMVC.Controllers
 
             ModelState.AddModelError("", "Artist could not be created.");
 
-            return View(model);
+            return View(artists);
         }
 
        
@@ -70,7 +69,8 @@ namespace PRDCRfriend.WebMVC.Controllers
             var model =
                 new ArtistEdit
                 {
-                    
+                    LastName = detail.LastName,
+                    FirstName = detail.FirstName,
                     ProjectTitle = detail.ProjectTitle,
                     Email = detail.Email,
                     PhoneNumber = detail.PhoneNumber
