@@ -6,11 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace PRDCRfriend.Models.SessionModels
 {
     public class SessionCreate
     {
+        [Required]
+        public int Id { get; set; }
 
         [Required]
         [Display(Name = "Project Title")]
@@ -39,15 +42,14 @@ namespace PRDCRfriend.Models.SessionModels
         //[Display(Name = "Last Name")]
         //public string ArtistLastName { get; set; }
 
-        [Required]
         public int ProducerId { get; set; }
-
-        [Required]
+      
         public int ArtistId { get; set; }
 
-        [Required]
-        [Display(Name = "Artists")]
-        public virtual List<Artist> Artists { get; set; } = new List<Artist>();
+       
+        [Display(Name = "Artist Name")]
+        public string Name { get; set; }
+       
 
 
 

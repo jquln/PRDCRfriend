@@ -30,9 +30,10 @@ namespace PRDCRfriend.Models.SessionModels
         [Required]
         public TimeSpan Duration { get; set; }
 
-        [Required]
-        [Display(Name = "Artists")]
-        public List<Artist> Artists { get; set; } 
+        //[Required]
+        //[Display(Name = "Artists")]
+        //public Artist SelectedArtist { get; set; } 
+        //public IEnumerable<ArtistListItem> Artists { get; set; }
            
 
         [Required]

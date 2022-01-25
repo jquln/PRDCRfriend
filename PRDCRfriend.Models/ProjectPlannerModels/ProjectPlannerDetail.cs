@@ -9,7 +9,7 @@ namespace PRDCRfriend.Models.PlannerModels
 {
     public class PlannerDetail
     {
-
+        public int Id { get; set; }
         public string ProjectTitle { get; set; }
 
         public string Artist { get; set; }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
+using PRDCRfriend.Data;
+using PRDCRfriend.Models.ArtistModels;
 using PRDCRfriend.Models.SessionModels;
 using PRDCRfriend.Services;
 using System;
@@ -15,12 +17,22 @@ namespace PRDCRfriend.WebMVC.Controllers
         // GET: Session
         public ActionResult Index()
         {
+            
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SessionService(userId);
             var model = service.GetSessions();
-           
-
+            
+            //var artists = new List<Artist>();
+            //var artistsSelectListItems = artists.Select(artist => new SelectListItem
+            //{
+            //    Text = artist.ToString(),
+            //    Value = artist.ToString()
+            //}).ToList();
+            
+                
             return View(model);
+            
+           
         }
 
         //GET
@@ -53,13 +65,18 @@ namespace PRDCRfriend.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateSessionWithArtist(SessionProducerCreate session)
         {
+            var service = CreateSessionService();
             if (!ModelState.IsValid)
                 return View(session);
 
-            var service = CreateSessionService();
+           
             if (!service.CreateSessionWithArtist(session))
+            {
+                TempData["SaveResult"] = "Your Recording Session was scheduled.";
                 return RedirectToAction("Index");
+            }
 
+            ModelState.AddModelError("", "Recording Session was not scheduled.");
             return View(session);
         }
 
@@ -71,6 +88,7 @@ namespace PRDCRfriend.WebMVC.Controllers
 
             return View(model);
         }
+
 
         public ActionResult Edit(int id)
         {

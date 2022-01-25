@@ -18,12 +18,13 @@ namespace PRDCRfriend.Services
             _userId = userId;
         }
 
+
         public bool CreateArtist(ArtistCreate model)
         {
             var entity =
                 new Artist()
                 {
-                    OwnerId = _userId,
+                    //OwnerId = _userId,
                     ProjectTitle = model.ProjectTitle,
                     LastName = model.LastName,
                     FirstName = model.FirstName,

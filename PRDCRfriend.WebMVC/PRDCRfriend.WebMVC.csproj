@@ -285,10 +285,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
     <Content Include="Views\Session\Index.cshtml" />
-    <Content Include="Views\Session\Create.cshtml" />
     <Content Include="Views\Session\Edit.cshtml" />
     <Content Include="Views\Session\Details.cshtml" />
-    <Content Include="Views\ProjectPlanner\Create.cshtml" />
     <Content Include="Views\ProjectPlanner\Details.cshtml" />
     <Content Include="Views\ProjectPlanner\Edit.cshtml" />
     <Content Include="Views\ProjectPlanner\Index.cshtml" />
@@ -303,6 +301,8 @@
     <Content Include="Views\Artist\Details.cshtml" />
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Session\Create.cshtml" />
+    <Content Include="Views\ProjectPlanner\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

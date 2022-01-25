@@ -32,5 +32,9 @@ namespace PRDCRfriend.Models.ArtistModels
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
+        [Required]
+        [Display(Name = "Artists")]
+        public string SelectedArtist { get; set; }
+        public IEnumerable<ArtistListItem> Artists { get; set; }
     }
 }
