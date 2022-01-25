@@ -28,7 +28,7 @@ namespace PRDCRfriend.Data
 
 
         [Required]
-        public string Content { get; set; }
+        public Contents Content { get; set; }
 
         [Required]
         public int ProducerId { get; set; }

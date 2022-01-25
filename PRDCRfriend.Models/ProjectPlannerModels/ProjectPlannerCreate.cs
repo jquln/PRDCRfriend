@@ -21,7 +21,7 @@ namespace PRDCRfriend.Models.PlannerModels
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
-        public string Content { get; set; }
+        public Contents Content { get; set; }
 
         [Required]
         public int ProducerId { get; set; }
@@ -30,7 +30,7 @@ namespace PRDCRfriend.Models.PlannerModels
         [Display(Name = "Artist Name")]
         public string Artist { get; set; }
         public int ArtistId { get; set; }
-        public Contents PlannerContent { get; set; }
+        
 
     }
 }

@@ -19,6 +19,8 @@ namespace PRDCRfriend.Services
 
         public bool CreatePlanner(PlannerCreate model)
         {
+            using (var ctx = new ApplicationDbContext())
+            {
             var entity =
                 new ProjectPlanner()
                 {
@@ -26,14 +28,12 @@ namespace PRDCRfriend.Services
                     ProjectTitle = model.ProjectTitle,
                     Date = model.Date,
                     Content = model.Content,
-                    ProducerId = model.ProducerId
-                    //ProducerId = ctx.Producers.Single(x => x.OwnerId == _userId).Id,
+                    //ProducerId = model.ProducerId
+                    ProducerId = ctx.Producers.Single(x => x.OwnerId == _userId).Id,
                     //ArtistId = model.ArtistId
                 };
 
                 
-            using (var ctx = new ApplicationDbContext())
-            {
                 ctx.ProjectPlanners.Add(entity);
                 return ctx.SaveChanges() == 1;
             }

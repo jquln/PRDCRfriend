@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRDCRfriend.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace PRDCRfriend.Models.ProjectPlannerModels
 
         public DateTime Date { get; set; }
 
-        public string Content { get; set; }
+        public Contents Content { get; set; }
 
         public string Artist { get; set; }
 

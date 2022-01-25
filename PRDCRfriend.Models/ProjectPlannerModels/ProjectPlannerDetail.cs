@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRDCRfriend.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace PRDCRfriend.Models.PlannerModels
 
         public int ProducerId { get; set; }
 
-        public string Content { get; set; }
+        public Contents Content { get; set; }
 
         public List<Content> ContentList { get; set; }
        

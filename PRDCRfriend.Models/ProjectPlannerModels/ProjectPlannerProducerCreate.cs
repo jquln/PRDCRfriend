@@ -19,7 +19,7 @@ namespace PRDCRfriend.Models.PlannerModels
 
         [Required]
         [Display(Name ="Content and Notes")]
-        public string Content { get; set; }
+        public Contents Content { get; set; }
 
         [Required]
         public DateTime Date { get; set; }
