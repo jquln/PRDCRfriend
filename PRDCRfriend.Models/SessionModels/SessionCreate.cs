@@ -14,6 +14,7 @@ namespace PRDCRfriend.Models.SessionModels
     {
         [Required]
         public int Id { get; set; }
+       
 
         [Required]
         [Display(Name = "Project Title")]
@@ -42,13 +43,12 @@ namespace PRDCRfriend.Models.SessionModels
         //[Display(Name = "Last Name")]
         //public string ArtistLastName { get; set; }
 
-        public int ProducerId { get; set; }
+        //public int ProducerId { get; set; }
       
         public int ArtistId { get; set; }
 
        
-        [Display(Name = "Artist Name")]
-        public string Name { get; set; }
+        
        
 
 

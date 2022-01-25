@@ -18,13 +18,13 @@
             @Html.DisplayNameFor(model => model.Artist)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectTitle)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectTitle)
         </th>
         <th>
             @* @Html.DisplayNameFor(model => model.Producer)*@ 
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectTitle)
+            @Html.DisplayFor(modelItem => item.Artist)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
@@ -47,10 +47,10 @@
             @Html.DisplayFor(modelItem => item.Time)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Producer)
+            @Html.DisplayFor(modelItem => item.ProjectTitle)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Artist)
+            @*@Html.DisplayFor(modelItem => item.Producer)*@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |

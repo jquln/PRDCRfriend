@@ -21,15 +21,15 @@ namespace PRDCRfriend.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SessionService(userId);
             var model = service.GetSessions();
-            
+
             //var artists = new List<Artist>();
             //var artistsSelectListItems = artists.Select(artist => new SelectListItem
             //{
             //    Text = artist.ToString(),
             //    Value = artist.ToString()
             //}).ToList();
-            
-                
+
+
             return View(model);
             
            

@@ -50,6 +50,7 @@ namespace PRDCRfriend.Models.SessionModels
 
         public int ProducerId { get; set; }
 
+        
 
     }
 }

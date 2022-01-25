@@ -88,7 +88,7 @@ namespace PRDCRfriend.Services
                             ProjectTitle = a.ProjectTitle,
                             Date = a.Date.ToShortDateString(),
                             Time = a.Time.ToShortDateString(),
-                            Artist = a.Artist.FullName()
+                            //Artist = a.Artist.FullName()
 
                         }).ToList()
                     };

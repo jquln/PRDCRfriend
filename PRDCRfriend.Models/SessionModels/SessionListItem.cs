@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRDCRfriend.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,13 +23,14 @@ namespace PRDCRfriend.Models.SessionModels
         public string Date { get; set; }
 
 
-        
         [Display(Name = "Time")]
         public string Time { get; set; }
 
+        public int ArtistId { get; set; }
+        public string Artist { get; set; }
         public string Producer { get; set; }
         
-        public string Artist { get; set; }
+        
 
     }
 }

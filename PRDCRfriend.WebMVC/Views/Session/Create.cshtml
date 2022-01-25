@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Time, "{0:HH:MM}", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Time, "{0:HH:mm}",  new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,9 +52,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ArtistId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ArtistId, "", new { @class = "text-danger" })
-
-                @*@Html.DropDownListFor(model => model.SelectArtist, new SelectList(Model.Artists, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Artist" })-->*@
-                @*@Html.DropDownList("SelectArtist", new SelectList(Enum.GetValues(typeof(SelectListItem))), htmlAttributes: new { @class = "form-control" })*@
             </div>
         </div>
 
