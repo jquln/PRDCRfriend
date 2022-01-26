@@ -14,6 +14,7 @@ namespace PRDCRfriend.WebMVC.Controllers
     
     public class ArtistController : Controller
     {
+
         // GET: Artist
         public ActionResult Index()
         {

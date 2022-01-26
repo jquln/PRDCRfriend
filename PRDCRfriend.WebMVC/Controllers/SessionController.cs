@@ -14,6 +14,8 @@ namespace PRDCRfriend.WebMVC.Controllers
     [Authorize]
     public class SessionController : Controller
     {
+        
+
         // GET: Session
         public ActionResult Index()
         {
