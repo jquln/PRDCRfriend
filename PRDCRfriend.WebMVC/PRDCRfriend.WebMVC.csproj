@@ -230,6 +230,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon %282%29.ico" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -304,6 +305,7 @@
     <Content Include="Views\Artist\Delete.cshtml" />
     <Content Include="Views\Session\Create.cshtml" />
     <Content Include="Views\ProjectPlanner\Create.cshtml" />
+    <Content Include="Views\Session\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
