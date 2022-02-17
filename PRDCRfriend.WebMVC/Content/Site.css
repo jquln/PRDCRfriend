@@ -1,6 +1,11 @@
 ﻿body {
+    background-image: url(assets/PRDCRfriend.gif);
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-size: cover;
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +27,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+

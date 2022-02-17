@@ -23,14 +23,9 @@ namespace PRDCRfriend.WebMVC
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-Lux.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/bundles/jqueryui").Include(
-                     "~/Scripts/jquery-ui-{version}.js"));
-
-            bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
-                     "~/Content/jquery-ui.css"));
         }
     }
 }
